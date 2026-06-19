@@ -1,0 +1,46 @@
+{
+  "fecha_actualizacion": "2026-06-19",
+  "generado_utc": "2026-06-19T23:53:44.647097+00:00",
+  "instrumentos": [
+    {
+      "id": "galicia_fima_premium",
+      "nombre": "Banco Galicia - FIMA Premium",
+      "tipo": "FCI Money Market",
+      "tna": 16.55,
+      "estimado": false,
+      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
+    },
+    {
+      "id": "macro_pionero_pesos_plus",
+      "nombre": "Banco Macro - Pionero Pesos Plus",
+      "tipo": "FCI Money Market",
+      "tna": 16.32,
+      "estimado": false,
+      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
+    },
+    {
+      "id": "santander_super_ahorro",
+      "nombre": "Banco Santander - Super Ahorro",
+      "tipo": "FCI Money Market",
+      "tna": 17.0,
+      "estimado": false,
+      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
+    },
+    {
+      "id": "mercadopago_mercado_fondo",
+      "nombre": "mercadopago_mercado_fondo",
+      "tipo": "Desconocido",
+      "tna": 18.19,
+      "estimado": false,
+      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
+    },
+    {
+      "id": "cocos_ahorro_fci",
+      "nombre": "cocos_ahorro_fci",
+      "tipo": "Desconocido",
+      "tna": 21.0,
+      "estimado": true,
+      "fuente": "https://cocos.capital/fondos (Cocos Capital, rendimiento anual estimado publicado en sitio oficial, ~junio 2026)"
+    }
+  ]
+}
