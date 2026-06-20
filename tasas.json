@@ -1,46 +1,132 @@
 {
-  "fecha_actualizacion": "2026-06-19",
-  "generado_utc": "2026-06-19T23:53:44.647097+00:00",
+  "fecha_actualizacion": "2026-06-20",
+  "generado_utc": "2026-06-20T00:31:22.804933+00:00",
   "instrumentos": [
     {
       "id": "galicia_fima_premium",
       "nombre": "Banco Galicia - FIMA Premium",
       "tipo": "FCI Money Market",
-      "tna": 16.55,
+      "riesgo": "bajo",
+      "tna": 28.66,
       "estimado": false,
-      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
+      "fuente": "fondosfima.com.ar - Folleto semanal FIMA Premium, datos al 10/06/2026 (rendimiento neto últimos 365 días, Clase A)"
+    },
+    {
+      "id": "galicia_fima_ahorro_pesos",
+      "nombre": "Banco Galicia - FIMA Ahorro Pesos",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 29.5,
+      "estimado": true,
+      "fuente": "fondosfima.com.ar - Sin dato numérico exacto accesible (requiere JS); estimado en base a rango de mercado FCI T+1 renta fija corto plazo Argentina junio 2026 (rankia.com.ar)"
+    },
+    {
+      "id": "galicia_fima_ahorro_plus",
+      "nombre": "Banco Galicia - FIMA Ahorro Plus",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 30.5,
+      "estimado": true,
+      "fuente": "fondosfima.com.ar - Sin dato numérico exacto accesible (requiere JS); estimado en base a rango de mercado FCI T+1 renta fija corto plazo Argentina junio 2026 (rankia.com.ar)"
+    },
+    {
+      "id": "santander_super_ahorro",
+      "nombre": "Banco Santander - Super Ahorro $",
+      "tipo": "FCI Money Market",
+      "riesgo": "bajo",
+      "tna": 27.5,
+      "estimado": true,
+      "fuente": "santander.com.ar / rankia.com.ar - Sin dato numérico directo accesible; estimado en base a rango FCI Money Market Argentina mayo-junio 2026 (27-29% TNA)"
+    },
+    {
+      "id": "santander_super_ahorro_plus",
+      "nombre": "Banco Santander - Super Ahorro Plus",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 30.0,
+      "estimado": true,
+      "fuente": "santander.com.ar / rankia.com.ar - Sin dato numérico directo accesible; estimado en base a rango FCI Renta Fija T+1 Argentina junio 2026 (29-32% TNA)"
     },
     {
       "id": "macro_pionero_pesos_plus",
       "nombre": "Banco Macro - Pionero Pesos Plus",
       "tipo": "FCI Money Market",
-      "tna": 16.32,
-      "estimado": false,
-      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
-    },
-    {
-      "id": "santander_super_ahorro",
-      "nombre": "Banco Santander - Super Ahorro",
-      "tipo": "FCI Money Market",
-      "tna": 17.0,
-      "estimado": false,
-      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
-    },
-    {
-      "id": "mercadopago_mercado_fondo",
-      "nombre": "mercadopago_mercado_fondo",
-      "tipo": "Desconocido",
-      "tna": 18.19,
-      "estimado": false,
-      "fuente": "https://www.lagaceta.com.ar/nota/1139304/economia/billeteras-virtuales-cuanto-paga-cada-junio-cual-ofrece-mejor-tasa.html (La Gaceta, relevamiento junio 2026)"
-    },
-    {
-      "id": "cocos_ahorro_fci",
-      "nombre": "cocos_ahorro_fci",
-      "tipo": "Desconocido",
-      "tna": 21.0,
+      "riesgo": "bajo",
+      "tna": 27.0,
       "estimado": true,
-      "fuente": "https://cocos.capital/fondos (Cocos Capital, rendimiento anual estimado publicado en sitio oficial, ~junio 2026)"
+      "fuente": "macrofondos.com.ar / rankia.com.ar - FCI Money Market Clásico; estimado en base a rango MM Argentina mayo-junio 2026 (27-29% TNA)"
+    },
+    {
+      "id": "macro_pionero_pesos",
+      "nombre": "Banco Macro - Pionero Pesos",
+      "tipo": "FCI Money Market",
+      "riesgo": "bajo",
+      "tna": 28.5,
+      "estimado": true,
+      "fuente": "macrofondos.com.ar / rankia.com.ar - FCI Money Market Dinámico; estimado en base a rango MM Dinámico Argentina mayo-junio 2026 (28-29% TNA)"
+    },
+    {
+      "id": "macro_pionero_ff_pionero",
+      "nombre": "Banco Macro - Pionero FF Pionero",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 30.5,
+      "estimado": true,
+      "fuente": "macrofondos.com.ar / rankia.com.ar - FCI Renta Fija corto plazo; estimado en base a rango T+1 Argentina junio 2026"
+    },
+    {
+      "id": "macro_renta_ahorro",
+      "nombre": "Banco Macro - Renta Ahorro",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 31.0,
+      "estimado": true,
+      "fuente": "fondos.macro.com.ar (Pionero Renta Ahorro PDF) - FCI Renta Fija corto plazo en pesos; estimado en base a cartera de LECAPs/BONCAPs y ONs tasa fija vigentes junio 2026"
+    },
+    {
+      "id": "macro_pionero_patrimonio_i",
+      "nombre": "Banco Macro - Pionero Patrimonio I",
+      "tipo": "FCI Renta Mixta",
+      "riesgo": "medio",
+      "tna": null,
+      "estimado": true,
+      "fuente": "macrofondos.com.ar - FCI Renta Mixta; no se encontró dato numérico TNA confiable y actualizado para este fondo (renta mixta con renta variable no tiene TNA estable)"
+    },
+    {
+      "id": "cocos_ahorro",
+      "nombre": "Cocos Capital - Cocos Ahorro",
+      "tipo": "FCI Money Market",
+      "riesgo": "bajo",
+      "tna": 21.0,
+      "estimado": false,
+      "fuente": "cocos.capital/fondos - Rendimiento anual estimado publicado en sitio oficial de Cocos Capital (Cocos Ahorro FCI, junio 2026)"
+    },
+    {
+      "id": "cocos_rendimiento_fci",
+      "nombre": "Cocos Capital - Cocos Rendimiento FCI",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 21.56,
+      "estimado": false,
+      "fuente": "cocos.capital/fondos - Rendimiento anual estimado 21,56% publicado en sitio oficial de Cocos Capital (Cocos Rendimiento FCI, junio 2026)"
+    },
+    {
+      "id": "cocos_pesos_plus",
+      "nombre": "Cocos Capital - Cocos Pesos Plus",
+      "tipo": "FCI Renta Fija",
+      "riesgo": "medio",
+      "tna": 27.0,
+      "estimado": false,
+      "fuente": "cocos.capital/fondos - Rendimiento anual estimado 27% publicado en sitio oficial de Cocos Capital (Cocos Pesos Plus, junio 2026)"
+    },
+    {
+      "id": "mercado_pago",
+      "nombre": "Mercado Pago - Mercado Fondo",
+      "tipo": "Cuenta remunerada / FCI Money Market",
+      "riesgo": "bajo",
+      "tna": 17.7,
+      "estimado": false,
+      "fuente": "iprofesional.com / infobae.com - Ranking billeteras virtuales mayo-junio 2026: Mercado Pago (FCI MM) 17.70% TNA"
     }
   ]
 }
