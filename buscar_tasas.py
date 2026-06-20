@@ -4,12 +4,13 @@ buscar_tasas.py
 Busca diariamente las tasas (TNA) de los instrumentos de inversion
 habilitados para el cliente, usando la API de Claude con web search.
 
-Instrumentos:
-  - FCI Money Market: Banco Galicia (FIMA Premium)
-  - FCI Money Market: Banco Macro (Pionero Pesos Plus)
-  - FCI Money Market: Banco Santander (Super Ahorro)
-  - Mercado Pago (Mercado Fondo)
-  - Cocos Capital (Cocos Ahorro FCI)
+Instrumentos (14 en total, clasificados por riesgo bajo/medio):
+  - Banco Galicia: FIMA Premium, FIMA Ahorro Pesos, FIMA Ahorro Plus
+  - Banco Santander: Super Ahorro $, Super Ahorro Plus
+  - Banco Macro: Pionero Pesos Plus, Pionero Pesos, Pionero FF Pionero,
+                 Renta Ahorro, Pionero Patrimonio I
+  - Cocos Capital: Cocos Ahorro, Cocos Rendimiento FCI, Cocos Pesos Plus
+  - Mercado Pago: Mercado Fondo
 
 Salida:
   - tasas.json        -> archivo publico que va a leer el artifact
@@ -34,26 +35,85 @@ INSTRUMENTOS = [
         "id": "galicia_fima_premium",
         "nombre": "Banco Galicia - FIMA Premium",
         "tipo": "FCI Money Market",
+        "riesgo": "bajo",
+    },
+    {
+        "id": "galicia_fima_ahorro_pesos",
+        "nombre": "Banco Galicia - FIMA Ahorro Pesos",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
+    },
+    {
+        "id": "galicia_fima_ahorro_plus",
+        "nombre": "Banco Galicia - FIMA Ahorro Plus",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
+    },
+    {
+        "id": "santander_super_ahorro",
+        "nombre": "Banco Santander - Super Ahorro $",
+        "tipo": "FCI Money Market",
+        "riesgo": "bajo",
+    },
+    {
+        "id": "santander_super_ahorro_plus",
+        "nombre": "Banco Santander - Super Ahorro Plus",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
     },
     {
         "id": "macro_pionero_pesos_plus",
         "nombre": "Banco Macro - Pionero Pesos Plus",
         "tipo": "FCI Money Market",
+        "riesgo": "bajo",
     },
     {
-        "id": "santander_super_ahorro",
-        "nombre": "Banco Santander - Super Ahorro",
+        "id": "macro_pionero_pesos",
+        "nombre": "Banco Macro - Pionero Pesos",
         "tipo": "FCI Money Market",
+        "riesgo": "bajo",
+    },
+    {
+        "id": "macro_pionero_ff_pionero",
+        "nombre": "Banco Macro - Pionero FF Pionero",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
+    },
+    {
+        "id": "macro_renta_ahorro",
+        "nombre": "Banco Macro - Renta Ahorro",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
+    },
+    {
+        "id": "macro_pionero_patrimonio_i",
+        "nombre": "Banco Macro - Pionero Patrimonio I",
+        "tipo": "FCI Renta Mixta",
+        "riesgo": "medio",
+    },
+    {
+        "id": "cocos_ahorro",
+        "nombre": "Cocos Capital - Cocos Ahorro",
+        "tipo": "FCI Money Market",
+        "riesgo": "bajo",
+    },
+    {
+        "id": "cocos_rendimiento_fci",
+        "nombre": "Cocos Capital - Cocos Rendimiento FCI",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
+    },
+    {
+        "id": "cocos_pesos_plus",
+        "nombre": "Cocos Capital - Cocos Pesos Plus",
+        "tipo": "FCI Renta Fija",
+        "riesgo": "medio",
     },
     {
         "id": "mercado_pago",
         "nombre": "Mercado Pago - Mercado Fondo",
         "tipo": "Cuenta remunerada / FCI Money Market",
-    },
-    {
-        "id": "cocos_capital",
-        "nombre": "Cocos Capital - Cocos Ahorro FCI",
-        "tipo": "FCI Money Market",
+        "riesgo": "bajo",
     },
 ]
 
@@ -72,19 +132,27 @@ Reglas:
 
 
 def construir_prompt_usuario():
-    lista = "\n".join(f"- {i['nombre']} ({i['tipo']})" for i in INSTRUMENTOS)
+    lista_numerada = "\n".join(
+        f"{idx + 1}. id=\"{i['id']}\" -> {i['nombre']} ({i['tipo']})"
+        for idx, i in enumerate(INSTRUMENTOS)
+    )
     return f"""Buscá en la web la TNA (tasa nominal anual) vigente HOY para estos
 instrumentos de inversion en Argentina:
 
-{lista}
+{lista_numerada}
 
-Devolveme un JSON con este formato exacto (un objeto por instrumento, en el
-mismo orden de la lista, usando el campo "id" tal cual te lo doy):
+Devolveme un JSON con un objeto por instrumento, EN EL MISMO ORDEN numerado
+de arriba (primero el 1, despues el 2, etc.), usando EXACTAMENTE el mismo
+valor de "id" que te di entre comillas para cada uno (no lo traduzcas, no lo
+abrevies, no le cambies el formato, copialo tal cual aparece despues de
+"id=").
+
+Formato exacto esperado:
 
 {{
   "fecha": "YYYY-MM-DD",
   "instrumentos": [
-    {{"id": "galicia_fima_premium", "tna": 16.55, "estimado": false, "fuente": "nombre o url de la fuente"}},
+    {{"id": "{INSTRUMENTOS[0]['id']}", "tna": 16.55, "estimado": false, "fuente": "nombre o url de la fuente"}},
     ...
   ]
 }}
@@ -107,7 +175,7 @@ def buscar_tasas():
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=2000,
+        max_tokens=4000,
         system=SYSTEM_PROMPT,
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{"role": "user", "content": construir_prompt_usuario()}],
@@ -126,16 +194,36 @@ def buscar_tasas():
 
 
 def enriquecer_con_metadata(data):
-    """Le agrega nombre y tipo a cada instrumento, cruzando por id."""
+    """Le agrega nombre y tipo a cada instrumento.
+
+    Primero intenta cruzar por id exacto. Si el modelo devolvio un id
+    distinto al esperado, usa la posicion en la lista como respaldo (ya que
+    le pedimos explicitamente que mantenga el mismo orden que le dimos).
+    """
     por_id = {i["id"]: i for i in INSTRUMENTOS}
+    items_respuesta = data.get("instrumentos", [])
     resultado = []
-    for item in data.get("instrumentos", []):
-        meta = por_id.get(item.get("id"), {})
+
+    for idx, item in enumerate(items_respuesta):
+        id_recibido = item.get("id")
+        meta = por_id.get(id_recibido)
+
+        if meta is None and idx < len(INSTRUMENTOS):
+            # Fallback: usamos la posicion, asumiendo que el modelo
+            # respeto el orden solicitado aunque cambio el id.
+            meta = INSTRUMENTOS[idx]
+            print(
+                f"Aviso: id '{id_recibido}' no coincide con la lista esperada, "
+                f"usando posicion {idx + 1} -> '{meta['id']}' como respaldo"
+            )
+
+        meta = meta or {}
         resultado.append(
             {
-                "id": item.get("id"),
-                "nombre": meta.get("nombre", item.get("id")),
+                "id": meta.get("id", id_recibido),
+                "nombre": meta.get("nombre", id_recibido or "Desconocido"),
                 "tipo": meta.get("tipo", "Desconocido"),
+                "riesgo": meta.get("riesgo", "desconocido"),
                 "tna": item.get("tna"),
                 "estimado": item.get("estimado", False),
                 "fuente": item.get("fuente", ""),
@@ -181,7 +269,7 @@ def actualizar_google_sheet(data, instrumentos):
     sheet = gc.open_by_key(sheet_id).sheet1
 
     filas = [
-        [data["fecha"], item["nombre"], item["tna"], item["tipo"]]
+        [data["fecha"], item["nombre"], item["tna"], item["tipo"], item["riesgo"]]
         for item in instrumentos
     ]
     sheet.append_rows(filas, value_input_option="USER_ENTERED")
