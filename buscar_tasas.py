@@ -232,6 +232,94 @@ def enriquecer_con_metadata(data):
     return resultado
 
 
+def leer_ultimo_valor_por_instrumento():
+    """Lee el historico completo de la Google Sheet y devuelve, para cada
+    id de instrumento, el ultimo valor de TNA valido (no nulo) registrado,
+    junto con la fecha de esa fila.
+
+    Devuelve un dict: {id: {"tna": float, "fecha": str}}
+    Si no se puede leer la sheet (sin credenciales, sin libreria, etc.),
+    devuelve un dict vacio sin hacer fallar el script.
+    """
+    try:
+        import gspread
+        from google.oauth2.service_account import Credentials
+    except ImportError:
+        print("gspread no instalado, no se puede leer el historico")
+        return {}
+
+    creds_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
+    sheet_id = os.environ.get("GOOGLE_SHEET_ID")
+
+    if not creds_json or not sheet_id:
+        print("Faltan credenciales de Google, no se puede leer el historico")
+        return {}
+
+    try:
+        creds_dict = json.loads(creds_json)
+        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
+        gc = gspread.authorize(creds)
+        sheet = gc.open_by_key(sheet_id).sheet1
+
+        # Columnas esperadas: fecha, instrumento (nombre), tna, tipo, riesgo
+        filas = sheet.get_all_values()
+    except Exception as e:
+        print(f"No se pudo leer el historico de la Sheet: {e}")
+        return {}
+
+    nombre_a_id = {i["nombre"]: i["id"] for i in INSTRUMENTOS}
+    ultimo_valor = {}
+
+    # Saltamos la fila de encabezados (fila 0)
+    for fila in filas[1:]:
+        if len(fila) < 3:
+            continue
+        fecha_fila, nombre_fila, tna_fila = fila[0], fila[1], fila[2]
+        id_instrumento = nombre_a_id.get(nombre_fila)
+        if not id_instrumento:
+            continue
+        try:
+            tna_valor = float(str(tna_fila).replace(",", "."))
+        except (ValueError, TypeError):
+            continue  # fila vacia o no numerica, la saltamos
+
+        # Como recorremos en orden, la ultima fila valida que encontremos
+        # para ese instrumento es la mas reciente (sobrescribe la anterior)
+        ultimo_valor[id_instrumento] = {"tna": tna_valor, "fecha": fecha_fila}
+
+    return ultimo_valor
+
+
+def completar_con_ultimo_valor_conocido(instrumentos, historico):
+    """Si un instrumento vino con tna None, lo completa con el ultimo valor
+    valido del historico (si existe) y lo marca como heredado de un dia
+    anterior, dejando claro que no es el dato de hoy.
+    """
+    for item in instrumentos:
+        if item["tna"] is not None:
+            continue
+
+        respaldo = historico.get(item["id"])
+        if respaldo is None:
+            print(f"Aviso: '{item['nombre']}' sin tasa hoy y sin historico previo, queda en null")
+            continue
+
+        item["tna"] = respaldo["tna"]
+        item["estimado"] = True
+        item["heredado_de_fecha"] = respaldo["fecha"]
+        item["fuente"] = (
+            f"Sin dato nuevo hoy, se mantiene el ultimo valor conocido "
+            f"del {respaldo['fecha']}"
+        )
+        print(
+            f"'{item['nombre']}' sin tasa hoy, se uso el ultimo valor "
+            f"conocido del {respaldo['fecha']}: {respaldo['tna']}%"
+        )
+
+    return instrumentos
+
+
 def guardar_json_publico(data, instrumentos, path="public/tasas.json"):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     salida = {
@@ -280,6 +368,10 @@ def main():
     print("Buscando tasas vigentes...")
     data = buscar_tasas()
     instrumentos = enriquecer_con_metadata(data)
+
+    print("Revisando historico para completar tasas faltantes...")
+    historico = leer_ultimo_valor_por_instrumento()
+    instrumentos = completar_con_ultimo_valor_conocido(instrumentos, historico)
 
     for item in instrumentos:
         marca = " (estimado)" if item["estimado"] else ""
