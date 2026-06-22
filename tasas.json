@@ -1,15 +1,15 @@
 {
-  "fecha_actualizacion": "2026-06-21",
-  "generado_utc": "2026-06-21T22:06:30.100613+00:00",
+  "fecha_actualizacion": "2026-06-22",
+  "generado_utc": "2026-06-22T21:29:29.828571+00:00",
   "instrumentos": [
     {
       "id": "galicia_fima_premium",
       "nombre": "Banco Galicia - FIMA Premium",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 15.7,
-      "estimado": true,
-      "fuente": "elchorrillero.com (13/06/2026) — ranking Compara Tasas / Billeteras Virtuales: Galicia 15,7% TNA (FCI MM cuenta remunerada)"
+      "tna": 16.0,
+      "estimado": false,
+      "fuente": "comparatasas.ar — Fima Premium Clase A Galicia, TNA vigente desde 17/06/2026"
     },
     {
       "id": "galicia_fima_ahorro_pesos",
@@ -18,8 +18,8 @@
       "riesgo": "medio",
       "tna": 26.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-20",
-      "heredado_de_fecha": "2026-06-20"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "galicia_fima_ahorro_plus",
@@ -28,17 +28,17 @@
       "riesgo": "medio",
       "tna": 27.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-20",
-      "heredado_de_fecha": "2026-06-20"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "santander_super_ahorro",
       "nombre": "Banco Santander - Super Ahorro $",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 16.06,
+      "tna": 16.4,
       "estimado": true,
-      "fuente": "elchorrillero.com (13/06/2026) — ranking Compara Tasas / Billeteras Virtuales: Santander 16,06% TNA (FCI MM / cuenta remunerada)"
+      "fuente": "iprofesional.com — 'Super Ahorro $ -Santander-: 16,40% TNA', artículo de junio 2026"
     },
     {
       "id": "santander_super_ahorro_plus",
@@ -47,26 +47,26 @@
       "riesgo": "medio",
       "tna": 24.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-20",
-      "heredado_de_fecha": "2026-06-20"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "macro_pionero_pesos_plus",
       "nombre": "Banco Macro - Pionero Pesos Plus",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 15.23,
+      "tna": 15.73,
       "estimado": true,
-      "fuente": "elchorrillero.com (13/06/2026) — ranking Compara Tasas / Billeteras Virtuales: Macro 15,23% TNA (FCI MM Pionero Pesos Plus / cuenta remunerada)"
+      "fuente": "comparatasas.ar — Pionero Pesos Clase A Macro 15.73% TNA desde 18/06/2026; Pionero Pesos Plus (MM Clásico) no aparece por separado, se usa Pionero Pesos como referencia más cercana"
     },
     {
       "id": "macro_pionero_pesos",
       "nombre": "Banco Macro - Pionero Pesos",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 15.23,
-      "estimado": true,
-      "fuente": "elchorrillero.com (13/06/2026) — proxy Macro MM; Pionero Pesos (MM Dinámico) rinde similar a Pionero Pesos Plus según macrofondos.com.ar"
+      "tna": 15.73,
+      "estimado": false,
+      "fuente": "comparatasas.ar — Pionero Pesos Clase A Macro, TNA vigente desde 18/06/2026"
     },
     {
       "id": "macro_pionero_ff_pionero",
@@ -75,8 +75,8 @@
       "riesgo": "medio",
       "tna": 26.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-20",
-      "heredado_de_fecha": "2026-06-20"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "macro_renta_ahorro",
@@ -85,8 +85,8 @@
       "riesgo": "medio",
       "tna": 25.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-20",
-      "heredado_de_fecha": "2026-06-20"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "macro_pionero_patrimonio_i",
@@ -95,8 +95,8 @@
       "riesgo": "medio",
       "tna": 29.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-20",
-      "heredado_de_fecha": "2026-06-20"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "cocos_ahorro",
@@ -105,34 +105,35 @@
       "riesgo": "bajo",
       "tna": 21.0,
       "estimado": true,
-      "fuente": "cocos.capital/fondos — rendimiento anual estimado ~21% (FCI Money Market Cocos Ahorro, clase A)"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-21",
+      "heredado_de_fecha": "2026-06-21"
     },
     {
       "id": "cocos_rendimiento_fci",
       "nombre": "Cocos Capital - Cocos Rendimiento FCI",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 20.47,
-      "estimado": true,
-      "fuente": "elchorrillero.com (13/06/2026) — Cocos FCI de renta mixta/bajo riesgo (COCORMA): TNA 20,47%; confirmado por iproup.com y eldestapeweb.com (junio 2026) con ~20% TNA"
+      "tna": 20.88,
+      "estimado": false,
+      "fuente": "comparatasas.ar — Cocos Rendimiento Clase A, Renta Mixta, TNA vigente desde 18/06/2026"
     },
     {
       "id": "cocos_pesos_plus",
       "nombre": "Cocos Capital - Cocos Pesos Plus",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 24.0,
-      "estimado": true,
-      "fuente": "iprofesional.com (junio 2026) — FCI Cocos Pesos Plus TNA estimada 24%; cocos.capital/fondos indica ~27% rendimiento anual estimado"
+      "tna": 22.48,
+      "estimado": false,
+      "fuente": "comparatasas.ar — Cocos Pesos Plus Clase A, Retorno Total, TNA vigente desde 18/06/2026"
     },
     {
       "id": "mercado_pago",
       "nombre": "Mercado Pago - Mercado Fondo",
       "tipo": "Cuenta remunerada / FCI Money Market",
       "riesgo": "bajo",
-      "tna": 17.23,
+      "tna": 17.65,
       "estimado": true,
-      "fuente": "elchorrillero.com (13/06/2026) — ranking Compara Tasas / Billeteras Virtuales: Mercado Pago 17,23% TNA (Mercado Fondo FCI MM); confirmado por infobae.com (27/05/2026) en rango 17,65%-17,85%"
+      "fuente": "infobae.com (27/05/2026) — Mercado Pago entre 17,85% y 17,65% TNA; calcularsueldo.com.ar reporta 17.6% TNA vigente"
     }
   ]
 }
