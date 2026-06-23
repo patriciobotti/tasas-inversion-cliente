@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>¿Dónde invierto el excedente? - Estudio Botti</title>
+<style>
+  :root {
+    --navy: #1E2761;
+    --ice: #CADCFC;
+    --card-bg: #F4F6FC;
+    --text-dark: #23262F;
+    --text-muted: #5F6373;
+    --danger-bg: #FCE9E9;
+    --danger-text: #A32D2D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #fff;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap {
+    max-width: 520px;
+    width: 100%;
+    padding: 2rem 1.5rem 3rem;
+  }
+  h1 {
+    font-size: 22px;
+    color: var(--navy);
+    margin: 0 0 6px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 1.75rem;
+  }
+  label {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1px solid #D8DAE5;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-family: inherit;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  #resultado {
+    margin-top: 1.5rem;
+    display: none;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+  .card p {
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin: 0;
+  }
+  .fecha-tag {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .error-box {
+    padding: 12px;
+    background: var(--danger-bg);
+    color: var(--danger-text);
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  #cargando {
+    display: none;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 1rem 0;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #EEEFF4;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>¿Dónde invierto el excedente?</h1>
+  <p class="subtitle">Herramienta de apoyo a la decisión — Estudio Botti</p>
+
+  <label for="monto">Monto disponible (ARS)</label>
+  <input type="number" id="monto" placeholder="2000000" />
+
+  <label for="plazo">¿Con certeza no lo vas a necesitar por cuántos días?</label>
+  <select id="plazo">
+    <option value="incierto">No estoy seguro / puede ser en cualquier momento</option>
+    <option value="7">Menos de 7 días</option>
+    <option value="15" selected>Entre 7 y 30 días</option>
+    <option value="45">Más de 30 días</option>
+  </select>
+
+  <button id="btn-consultar">Consultar recomendación</button>
+
+  <div id="cargando">Buscando la mejor opción...</div>
+  <div id="resultado"></div>
+
+  <p class="footer-note">
+    Las tasas se actualizan automáticamente una vez por día. Esta herramienta
+    es un apoyo a la decisión provisto por Estudio Botti, no reemplaza el
+    asesoramiento profesional.
+  </p>
+</div>
+
+<script>
+  const boton = document.getElementById("btn-consultar");
+  const resultado = document.getElementById("resultado");
+  const cargando = document.getElementById("cargando");
+
+  boton.addEventListener("click", async () => {
+    const monto = document.getElementById("monto").value;
+    const plazo = document.getElementById("plazo").value;
+
+    if (!monto || Number(monto) <= 0) {
+      resultado.style.display = "block";
+      resultado.innerHTML = '<div class="error-box">Ingresá un monto válido para continuar.</div>';
+      return;
+    }
+
+    boton.disabled = true;
+    resultado.style.display = "none";
+    cargando.style.display = "block";
+
+    try {
+      const resp = await fetch("/api/recomendar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ monto, plazo }),
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        throw new Error(data.error || "Error desconocido");
+      }
+
+      cargando.style.display = "none";
+      resultado.style.display = "block";
+      resultado.innerHTML =
+        '<div class="card">' +
+          '<div class="fecha-tag">Tasas actualizadas el ' + data.fecha_tasas + '</div>' +
+          '<p>' + data.recomendacion.replace(/</g, "&lt;") + '</p>' +
+        '</div>';
+    } catch (err) {
+      cargando.style.display = "none";
+      resultado.style.display = "block";
+      resultado.innerHTML = '<div class="error-box">Hubo un problema al consultar: ' + err.message + '. Intentá nuevamente.</div>';
+    } finally {
+      boton.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

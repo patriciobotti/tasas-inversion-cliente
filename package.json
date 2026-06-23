@@ -1,0 +1,6 @@
+{
+  "name": "tasas-inversion-cliente-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pagina de consulta de inversion de excedentes, con backend serverless en Vercel que llama a la API de Claude de forma segura."
+}
