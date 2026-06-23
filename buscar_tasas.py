@@ -123,6 +123,12 @@ numericos actuales, buscados en la web, en formato JSON estricto.
 
 Reglas:
 - Buscá la TNA (tasa nominal anual) mas reciente disponible para cada instrumento.
+- Se eficiente con las busquedas: agrupa por banco/entidad. Por ejemplo,
+  busca una sola vez "fondos Banco Galicia FIMA tasas" en vez de buscar
+  cada fondo de Galicia por separado, y saca todos los datos de esa misma
+  pagina o resultado si es posible. Apunta a resolver todo con la menor
+  cantidad de busquedas posible (idealmente una por banco/entidad, maximo
+  8 busquedas en total para los 14 instrumentos).
 - Si no encontras un dato exacto para un instrumento puntual, usa el valor mas
   cercano y confiable que encuentres, y marca "estimado": true en ese caso.
 - Nunca inventes un numero. Si no encontras nada razonable, poné "tna": null.
@@ -174,10 +180,16 @@ def buscar_tasas():
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     response = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-haiku-4-5-20251001",
         max_tokens=4000,
         system=SYSTEM_PROMPT,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        tools=[
+            {
+                "type": "web_search_20250305",
+                "name": "web_search",
+                "max_uses": 8,
+            }
+        ],
         messages=[{"role": "user", "content": construir_prompt_usuario()}],
     )
 
