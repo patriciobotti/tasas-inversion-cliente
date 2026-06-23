@@ -2,8 +2,12 @@ name: Actualizar tasas de inversion
 
 on:
   schedule:
-    - cron: "0 11 * * *"
+    # Corre de lunes a viernes a las 11:00 UTC (08:00 hora Argentina)
+    # El "1-5" son los dias de la semana (1=lunes, 5=viernes), se omiten
+    # sabado y domingo ya que los mercados no operan esos dias
+    - cron: "0 11 * * 1-5"
   workflow_dispatch: {}
+    # Permite tambien correrlo manualmente desde la pestaña "Actions" en GitHub
 
 permissions:
   contents: write
