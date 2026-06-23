@@ -79,11 +79,57 @@
     border-radius: 12px;
     padding: 1.1rem 1.25rem;
   }
-  .card p {
-    font-size: 15px;
-    line-height: 1.6;
-    white-space: pre-wrap;
-    margin: 0;
+  .card p.comentario {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-dark);
+    margin: 0 0 14px;
+  }
+  table.tabla-opciones {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  table.tabla-opciones th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 0 8px 8px 0;
+    border-bottom: 1px solid #DEE1EC;
+  }
+  table.tabla-opciones td {
+    padding: 9px 8px 9px 0;
+    border-bottom: 1px solid #E7E9F1;
+    vertical-align: top;
+  }
+  table.tabla-opciones tr:last-child td {
+    border-bottom: none;
+  }
+  .tna-valor {
+    font-weight: 700;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .badge-riesgo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge-bajo {
+    background: #E3F1DC;
+    color: #2F6B1F;
+  }
+  .badge-medio {
+    background: #FBEFD9;
+    color: #8A5A0B;
+  }
+  .nota-celda {
+    font-size: 12px;
+    color: var(--text-muted);
   }
   .fecha-tag {
     font-size: 12px;
@@ -146,6 +192,50 @@
   const resultado = document.getElementById("resultado");
   const cargando = document.getElementById("cargando");
 
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+
+  function formatearTna(valor) {
+    if (valor === null || valor === undefined || isNaN(Number(valor))) return "—";
+    return Number(valor).toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%";
+  }
+
+  function badgeRiesgo(riesgo) {
+    const r = (riesgo || "").toLowerCase();
+    const clase = r === "bajo" ? "badge-bajo" : "badge-medio";
+    const texto = r === "bajo" ? "Bajo" : "Medio";
+    return '<span class="badge-riesgo ' + clase + '">' + texto + '</span>';
+  }
+
+  function construirTabla(opciones) {
+    if (!opciones || opciones.length === 0) {
+      return '<p style="font-size: 14px; color: var(--text-muted);">No se encontraron opciones para mostrar.</p>';
+    }
+    const filas = opciones.map((op) => {
+      const nota = op.estimado && !op.nota ? "Valor aproximado" : (op.nota || "");
+      return (
+        "<tr>" +
+        "<td>" + escapeHtml(op.nombre || "") + "</td>" +
+        '<td class="tna-valor">' + formatearTna(op.tna) + "</td>" +
+        "<td>" + badgeRiesgo(op.riesgo) + "</td>" +
+        '<td class="nota-celda">' + escapeHtml(nota) + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+
+    return (
+      '<table class="tabla-opciones">' +
+        "<thead><tr>" +
+          "<th>Instrumento</th><th>TNA</th><th>Riesgo</th><th>Nota</th>" +
+        "</tr></thead>" +
+        "<tbody>" + filas + "</tbody>" +
+      "</table>"
+    );
+  }
+
   boton.addEventListener("click", async () => {
     const monto = document.getElementById("monto").value;
     const plazo = document.getElementById("plazo").value;
@@ -177,8 +267,9 @@
       resultado.style.display = "block";
       resultado.innerHTML =
         '<div class="card">' +
-          '<div class="fecha-tag">Tasas actualizadas el ' + data.fecha_tasas + '</div>' +
-          '<p>' + data.recomendacion.replace(/</g, "&lt;") + '</p>' +
+          '<div class="fecha-tag">Tasas actualizadas el ' + escapeHtml(data.fecha_tasas) + '</div>' +
+          (data.comentario ? '<p class="comentario">' + escapeHtml(data.comentario) + '</p>' : '') +
+          construirTabla(data.opciones) +
         '</div>';
     } catch (err) {
       cargando.style.display = "none";

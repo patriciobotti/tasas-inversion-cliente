@@ -31,7 +31,26 @@ EN TODOS LOS CASOS:
 
 No das asesoramiento fiscal ni impositivo, eso lo maneja Estudio Botti. Si preguntan por algo fuera del universo de instrumentos dado, explica amablemente que no esta evaluado para el perfil regulatorio de la empresa y sugeri consultar con Estudio Botti.
 
-FORMATO: respondé breve y claro, en español argentino, sin tecnicismos innecesarios, maximo 130 palabras, sin encabezados markdown, en parrafos cortos.`;
+FORMATO: respondé EXCLUSIVAMENTE con un JSON valido, sin texto antes ni
+despues, sin bloques de markdown ni comentarios. La estructura exacta debe
+ser:
+
+{
+  "comentario": "una o dos frases breves explicando el criterio de la recomendacion, en español argentino, sin tecnicismos, maximo 40 palabras",
+  "opciones": [
+    {
+      "nombre": "nombre del instrumento tal cual viene en los datos",
+      "tna": 21.5,
+      "riesgo": "bajo o medio",
+      "estimado": true o false,
+      "nota": "breve aclaracion si aplica, por ejemplo 'valor aproximado' o 'dato del 2026-06-20', o string vacio si no aplica"
+    }
+  ]
+}
+
+Incluí entre 2 y 5 opciones en el array, ordenadas de mayor a menor TNA
+dentro de cada grupo de riesgo, respetando las reglas de arriba sobre que
+grupos de riesgo mostrar segun el plazo.`;
 
 function textoPlazo(plazo) {
   const mapa = {
@@ -47,6 +66,17 @@ function formatearMonto(valor) {
   const num = Number(valor);
   if (!isFinite(num)) return String(valor);
   return new Intl.NumberFormat("es-AR").format(Math.round(num));
+}
+
+function extraerJson(texto) {
+  let limpio = texto.trim();
+  limpio = limpio.replace(/^```(json)?/i, "").trim();
+  limpio = limpio.replace(/```$/, "").trim();
+  const match = limpio.match(/\{[\s\S]*\}/);
+  if (!match) {
+    throw new Error("La respuesta del modelo no contenia un JSON valido");
+  }
+  return JSON.parse(match[0]);
 }
 
 export default async function handler(req, res) {
@@ -124,8 +154,19 @@ export default async function handler(req, res) {
       .map((b) => b.text)
       .join("\n");
 
+    let estructurado;
+    try {
+      estructurado = extraerJson(textoRespuesta);
+    } catch (parseErr) {
+      // Si por algun motivo el modelo no devolvio JSON valido, igual le
+      // mostramos algo al cliente en vez de romper toda la consulta.
+      console.error("No se pudo parsear la respuesta como JSON:", parseErr.message);
+      estructurado = { comentario: textoRespuesta, opciones: [] };
+    }
+
     res.status(200).json({
-      recomendacion: textoRespuesta,
+      comentario: estructurado.comentario || "",
+      opciones: estructurado.opciones || [],
       fecha_tasas: tasasData.fecha_actualizacion,
     });
   } catch (err) {
