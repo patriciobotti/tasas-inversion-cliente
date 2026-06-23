@@ -106,6 +106,13 @@
   table.tabla-opciones tr:last-child td {
     border-bottom: none;
   }
+  table.tabla-opciones tr.destacado td {
+    background: #EAF1FF;
+  }
+  table.tabla-opciones tr.destacado td:first-child {
+    border-left: 3px solid var(--navy);
+    padding-left: 6px;
+  }
   .tna-valor {
     font-weight: 700;
     color: var(--navy);
@@ -216,8 +223,9 @@
     }
     const filas = opciones.map((op) => {
       const nota = op.estimado && !op.nota ? "Valor aproximado" : (op.nota || "");
+      const claseFila = op.destacado ? ' class="destacado"' : "";
       return (
-        "<tr>" +
+        "<tr" + claseFila + ">" +
         "<td>" + escapeHtml(op.nombre || "") + "</td>" +
         '<td class="tna-valor">' + formatearTna(op.tna) + "</td>" +
         "<td>" + badgeRiesgo(op.riesgo) + "</td>" +
