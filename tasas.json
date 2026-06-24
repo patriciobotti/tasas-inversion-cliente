@@ -1,6 +1,6 @@
 {
-  "fecha_actualizacion": "2026-06-23",
-  "generado_utc": "2026-06-23T17:33:09.715996+00:00",
+  "fecha_actualizacion": "2026-06-24",
+  "generado_utc": "2026-06-24T18:13:51.938044+00:00",
   "instrumentos": [
     {
       "id": "galicia_fima_premium",
@@ -9,7 +9,7 @@
       "riesgo": "bajo",
       "tna": 15.96,
       "estimado": false,
-      "fuente": "comparatasas.ar (basado en CAFCI) - Fima Premium Clase A - vigente desde 19/06/2026"
+      "fuente": "comparatasas.ar"
     },
     {
       "id": "galicia_fima_ahorro_pesos",
@@ -18,16 +18,17 @@
       "riesgo": "medio",
       "tna": 18.08,
       "estimado": true,
-      "fuente": "estadisticas.cafci2.org.ar - Fima Ahorro Plus Clase E (usado como proxy de Fima Ahorro Pesos, mismo tipo T+1 renta fija Galicia) - TNA del mes desde 29/05/2026"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "galicia_fima_ahorro_plus",
       "nombre": "Banco Galicia - FIMA Ahorro Plus",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 18.08,
+      "tna": 24.01,
       "estimado": false,
-      "fuente": "estadisticas.cafci2.org.ar - Fima Ahorro Plus Clase E - TNA del mes 18.0777% desde 29/05/2026"
+      "fuente": "fondosfima.com.ar"
     },
     {
       "id": "santander_super_ahorro",
@@ -36,7 +37,8 @@
       "riesgo": "bajo",
       "tna": 15.96,
       "estimado": true,
-      "fuente": "Estimado basado en rango de fondos money market bancarios similares (comparatasas.ar, junio 2026); no se encontró dato exacto publicado"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "santander_super_ahorro_plus",
@@ -45,7 +47,8 @@
       "riesgo": "medio",
       "tna": 18.5,
       "estimado": true,
-      "fuente": "Estimado basado en rango de fondos renta fija corta T+1 del mercado argentino (comparatasas.ar / infobae.com mayo-junio 2026); no se encontró dato exacto publicado"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "macro_pionero_pesos_plus",
@@ -54,7 +57,8 @@
       "riesgo": "bajo",
       "tna": 15.67,
       "estimado": true,
-      "fuente": "comparatasas.ar - Pionero Pesos Clase A (Money Market) 15.67% TNA vigente 22/06/2026; Pionero Pesos Plus no listado por separado, se usa valor del fondo MM principal de Macro"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "macro_pionero_pesos",
@@ -63,7 +67,7 @@
       "riesgo": "bajo",
       "tna": 15.67,
       "estimado": false,
-      "fuente": "comparatasas.ar (basado en CAFCI) - Pionero Pesos Clase A - vigente desde 22/06/2026"
+      "fuente": "comparatasas.ar"
     },
     {
       "id": "macro_pionero_ff_pionero",
@@ -72,8 +76,8 @@
       "riesgo": "medio",
       "tna": 26.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-22",
-      "heredado_de_fecha": "2026-06-22"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "macro_renta_ahorro",
@@ -82,7 +86,8 @@
       "riesgo": "medio",
       "tna": 19.0,
       "estimado": true,
-      "fuente": "Estimado basado en rango de fondos renta fija corta T+1 pesos del mercado (comparatasas.ar / rankia.com.ar junio 2026); no se encontró TNA exacta publicada para Pionero Renta Ahorro"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "macro_pionero_patrimonio_i",
@@ -91,8 +96,8 @@
       "riesgo": "medio",
       "tna": 29.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-22",
-      "heredado_de_fecha": "2026-06-22"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-06-23",
+      "heredado_de_fecha": "2026-06-23"
     },
     {
       "id": "cocos_ahorro",
@@ -101,7 +106,7 @@
       "riesgo": "bajo",
       "tna": 18.22,
       "estimado": false,
-      "fuente": "comparatasas.ar (basado en CAFCI) - Cocos Ahorro Clase A - vigente desde 22/06/2026"
+      "fuente": "comparatasas.ar"
     },
     {
       "id": "cocos_rendimiento_fci",
@@ -110,7 +115,7 @@
       "riesgo": "medio",
       "tna": 20.88,
       "estimado": false,
-      "fuente": "comparatasas.ar (basado en CAFCI) - Cocos Rendimiento Clase A (Renta Mixta) - vigente desde 22/06/2026"
+      "fuente": "comparatasas.ar"
     },
     {
       "id": "cocos_pesos_plus",
@@ -119,16 +124,16 @@
       "riesgo": "medio",
       "tna": 21.36,
       "estimado": false,
-      "fuente": "comparatasas.ar (basado en CAFCI) - Cocos Pesos Plus Clase A (Retorno Total) - vigente desde 22/06/2026"
+      "fuente": "comparatasas.ar"
     },
     {
       "id": "mercado_pago",
       "nombre": "Mercado Pago - Mercado Fondo",
       "tipo": "Cuenta remunerada / FCI Money Market",
       "riesgo": "bajo",
-      "tna": 17.54,
+      "tna": 33.07,
       "estimado": false,
-      "fuente": "comparatasas.ar (basado en CAFCI) - Mercado Fondo Clase A - vigente desde 22/06/2026"
+      "fuente": "comparatasas.ar"
     }
   ]
 }
