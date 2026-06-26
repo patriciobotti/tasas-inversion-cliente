@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "framework": null,
   "builds": [
     { "src": "public_app/**", "use": "@vercel/static" },
     { "src": "api/recomendar.js", "use": "@vercel/node" }
