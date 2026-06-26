@@ -1,0 +1,11 @@
+# Estos archivos son del bot de automatizacion diaria (corre en GitHub
+# Actions, NO en Vercel). Vercel solo debe desplegar la app web (api/ y
+# public_app/), asi que ignoramos todo lo relacionado a Python para que
+# no intente detectar un entrypoint de Python que no existe.
+
+buscar_tasas.py
+requirements.txt
+reglas_decision.md
+README.md
+DESPLIEGUE_VERCEL.md
+.github
