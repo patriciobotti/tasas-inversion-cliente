@@ -1,6 +1,6 @@
 {
-  "fecha_actualizacion": "2026-07-03",
-  "generado_utc": "2026-07-03T16:16:43.056216+00:00",
+  "fecha_actualizacion": "2026-07-06",
+  "generado_utc": "2026-07-06T18:27:08.901072+00:00",
   "instrumentos": [
     {
       "id": "galicia_fima_premium",
@@ -8,8 +8,9 @@
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
       "tna": 15.9,
-      "estimado": false,
-      "fuente": "iProfesional - Money Market Rankings (Junio 2026)"
+      "estimado": true,
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "galicia_fima_ahorro_pesos",
@@ -18,18 +19,17 @@
       "riesgo": "medio",
       "tna": 18.08,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "galicia_fima_ahorro_plus",
       "nombre": "Banco Galicia - FIMA Ahorro Plus",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 24.01,
-      "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "tna": 18.0777,
+      "estimado": false,
+      "fuente": "CAFCI (Cámara Argentina de Fondos de Inversión) - 29/05/2026"
     },
     {
       "id": "santander_super_ahorro",
@@ -37,8 +37,9 @@
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
       "tna": 16.4,
-      "estimado": false,
-      "fuente": "iProfesional - Money Market Rankings (Junio 2026)"
+      "estimado": true,
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "santander_super_ahorro_plus",
@@ -47,8 +48,8 @@
       "riesgo": "medio",
       "tna": 18.5,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "macro_pionero_pesos_plus",
@@ -57,17 +58,17 @@
       "riesgo": "bajo",
       "tna": 15.7,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "macro_pionero_pesos",
       "nombre": "Banco Macro - Pionero Pesos",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 15.26,
+      "tna": 15.77,
       "estimado": false,
-      "fuente": "iProfesional - Money Market Rankings (Junio 2026)"
+      "fuente": "comparatasas.ar - vigente desde 03/07/2026"
     },
     {
       "id": "macro_pionero_ff_pionero",
@@ -76,8 +77,8 @@
       "riesgo": "medio",
       "tna": 26.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "macro_renta_ahorro",
@@ -86,8 +87,8 @@
       "riesgo": "medio",
       "tna": 19.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "macro_pionero_patrimonio_i",
@@ -96,44 +97,44 @@
       "riesgo": "medio",
       "tna": 29.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-02",
-      "heredado_de_fecha": "2026-07-02"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-03",
+      "heredado_de_fecha": "2026-07-03"
     },
     {
       "id": "cocos_ahorro",
       "nombre": "Cocos Capital - Cocos Ahorro",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 18.33,
+      "tna": 17.48,
       "estimado": false,
-      "fuente": "iProfesional - Money Market Rankings (Junio 2026)"
+      "fuente": "comparatasas.ar - vigente desde 03/07/2026"
     },
     {
       "id": "cocos_rendimiento_fci",
       "nombre": "Cocos Capital - Cocos Rendimiento FCI",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 21.57,
+      "tna": 20.23,
       "estimado": false,
-      "fuente": "comparatasas.ar (30/06/2026)"
+      "fuente": "comparatasas.ar - vigente desde 03/07/2026"
     },
     {
       "id": "cocos_pesos_plus",
       "nombre": "Cocos Capital - Cocos Pesos Plus",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 23.33,
+      "tna": 24.84,
       "estimado": false,
-      "fuente": "comparatasas.ar (30/06/2026)"
+      "fuente": "comparatasas.ar - vigente desde 03/07/2026"
     },
     {
       "id": "mercado_pago",
       "nombre": "Mercado Pago - Mercado Fondo",
       "tipo": "Cuenta remunerada / FCI Money Market",
       "riesgo": "bajo",
-      "tna": 17.61,
+      "tna": 17.53,
       "estimado": false,
-      "fuente": "iProfesional - Money Market Rankings (Junio 2026)"
+      "fuente": "comparatasas.ar - vigente desde 03/07/2026"
     }
   ]
 }
