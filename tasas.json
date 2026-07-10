@@ -1,15 +1,15 @@
 {
-  "fecha_actualizacion": "2026-07-08",
-  "generado_utc": "2026-07-08T16:53:07.007831+00:00",
+  "fecha_actualizacion": "2026-07-10",
+  "generado_utc": "2026-07-10T17:30:19.896654+00:00",
   "instrumentos": [
     {
       "id": "galicia_fima_premium",
       "nombre": "Banco Galicia - FIMA Premium",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 15.98,
+      "tna": 15.9,
       "estimado": false,
-      "fuente": "comparatasas.ar - 02/07/2026"
+      "fuente": "iprofesional.com (junio 2026)"
     },
     {
       "id": "galicia_fima_ahorro_pesos",
@@ -18,8 +18,8 @@
       "riesgo": "medio",
       "tna": 18.08,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-07",
-      "heredado_de_fecha": "2026-07-07"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "galicia_fima_ahorro_plus",
@@ -27,8 +27,9 @@
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
       "tna": 24.01,
-      "estimado": false,
-      "fuente": "fondosfima.com.ar - folleto semanal"
+      "estimado": true,
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "santander_super_ahorro",
@@ -37,7 +38,7 @@
       "riesgo": "bajo",
       "tna": 16.4,
       "estimado": false,
-      "fuente": "iprofesional.com"
+      "fuente": "iprofesional.com (junio 2026)"
     },
     {
       "id": "santander_super_ahorro_plus",
@@ -46,8 +47,8 @@
       "riesgo": "medio",
       "tna": 18.5,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-07",
-      "heredado_de_fecha": "2026-07-07"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "macro_pionero_pesos_plus",
@@ -56,17 +57,17 @@
       "riesgo": "bajo",
       "tna": 15.77,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-07",
-      "heredado_de_fecha": "2026-07-07"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "macro_pionero_pesos",
       "nombre": "Banco Macro - Pionero Pesos",
       "tipo": "FCI Money Market",
       "riesgo": "bajo",
-      "tna": 15.77,
+      "tna": 15.26,
       "estimado": false,
-      "fuente": "comparatasas.ar - 03/07/2026"
+      "fuente": "iprofesional.com (junio 2026)"
     },
     {
       "id": "macro_pionero_ff_pionero",
@@ -75,8 +76,8 @@
       "riesgo": "medio",
       "tna": 26.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-07",
-      "heredado_de_fecha": "2026-07-07"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "macro_renta_ahorro",
@@ -85,8 +86,8 @@
       "riesgo": "medio",
       "tna": 19.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-07",
-      "heredado_de_fecha": "2026-07-07"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "macro_pionero_patrimonio_i",
@@ -95,8 +96,8 @@
       "riesgo": "medio",
       "tna": 29.0,
       "estimado": true,
-      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-07",
-      "heredado_de_fecha": "2026-07-07"
+      "fuente": "Sin dato nuevo hoy, se mantiene el ultimo valor conocido del 2026-07-08",
+      "heredado_de_fecha": "2026-07-08"
     },
     {
       "id": "cocos_ahorro",
@@ -105,34 +106,34 @@
       "riesgo": "bajo",
       "tna": 21.0,
       "estimado": true,
-      "fuente": "cocos.capital - rendimiento estimado"
+      "fuente": "cocos.capital (rendimiento anual estimado)"
     },
     {
       "id": "cocos_rendimiento_fci",
       "nombre": "Cocos Capital - Cocos Rendimiento FCI",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 20.23,
+      "tna": 20.8,
       "estimado": false,
-      "fuente": "comparatasas.ar - 03/07/2026"
+      "fuente": "comparatasas.ar (06/07/2026)"
     },
     {
       "id": "cocos_pesos_plus",
       "nombre": "Cocos Capital - Cocos Pesos Plus",
       "tipo": "FCI Renta Fija",
       "riesgo": "medio",
-      "tna": 24.84,
+      "tna": 23.87,
       "estimado": false,
-      "fuente": "comparatasas.ar - 03/07/2026"
+      "fuente": "comparatasas.ar (06/07/2026)"
     },
     {
       "id": "mercado_pago",
       "nombre": "Mercado Pago - Mercado Fondo",
       "tipo": "Cuenta remunerada / FCI Money Market",
       "riesgo": "bajo",
-      "tna": 27.71,
+      "tna": 24.93,
       "estimado": false,
-      "fuente": "comparatasas.ar - 03/07/2026"
+      "fuente": "comparatasas.ar (06/07/2026)"
     }
   ]
 }
